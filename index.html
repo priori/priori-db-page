@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Priori DB - Modern Database Management Tool</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #1976d2;
+        --text: #fff;
+        --accent: #fe0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+      }
+
+      body {
+        background: #2a2a2a;
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .header {
+        padding: 1.2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: calc(1.2rem + 14px);
+        background: #333;
+      }
+      .header div {
+        max-width: 960px;
+        margin: 0 auto;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 14px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+      }
+      .header p {
+        font-size: 15px;
+      }
+      .header strong {
+        color: #fe1;
+        font-size: 14px;
+      }
+
+      .header p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: #fff;
+        text-wrap: balance;
+      }
+
+      .feature-container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1.2rem;
+      }
+
+      .feature {
+        margin-bottom: 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .feature-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .feature h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+
+      .feature p {
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      .feature video,
+      .feature img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+
+      .about {
+        background: var(--primary);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .about h2 {
+        margin-bottom: 2rem;
+      }
+
+      .social-links {
+        margin-top: 2rem;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        padding: 0.5rem 1rem;
+        border: 2px solid white;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .social-links a:hover {
+        background: white;
+        color: var(--primary);
+      }
+
+      .tech-stack {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .tech-item {
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+      }
+
+      .support-section {
+        text-align: center;
+        padding: 3rem;
+        background: #222;
+      }
+      .support-section h2 {
+        color: #fe0;
+        margin-bottom: 18px;
+      }
+      .about p {
+        text-wrap: balance;
+      }
+      .about-content p a {
+        color: #fe0;
+        font-weight: bold;
+        font-size: 18px;
+        border-bottom: 3px solid #fe0;
+        line-height: 7px;
+        text-decoration: none;
+        height: 16px;
+        display: inline-block;
+      }
+      .feature-content {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      video {
+        max-width: 600px;
+        border-radius: 11px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+      }
+      .download {
+        background: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .download .fa {
+        margin-left: 4px;
+      }
+      .download:hover {
+        background: #16c;
+      }
+      .shortcut {
+        background: #444;
+        color: white;
+        border-radius: 4px;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        font-size: 21px;
+        font-family: monospace;
+        display: inline-block;
+        width: 95px;
+        text-align: center;
+        line-height: 35px;
+        height: 34px;
+        letter-spacing: 1.1px;
+      }
+      .ctrl {
+        letter-spacing: -0.7px;
+      }
+      .shortcut:first-of-type {
+        margin-left: 0;
+      }
+      .shortcuts {
+        margin-top: 20px;
+      }
+      small {
+        display: block;
+        margin-top: 12px;
+        font-size: 11px;
+        text-align: center;
+      }
+
+      @media (min-width: 920px) {
+        .feature {
+          display: flex;
+        }
+        .feature:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+        .header > div {
+          display: flex;
+        }
+      }
+      @media (max-width: 920px) {
+        .download {
+          display: block;
+          width: min-content;
+          margin-top: 16px;
+        }
+        .header h1,
+        .header p {
+          text-align: left;
+          margin-left: 0;
+        }
+        small {
+          text-align: left;
+          margin-left: 26px;
+          margin-top: -19px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <h1>Priori DB</h1>
+        <p>
+          This project was built in my free time out of passion. It's a database
+          management tool designed to be as practical and easy to use as
+          possible while offering a clean and intuitive interface. With it, you
+          can fully manage databases (<strong>MySQL</strong> and
+          <strong>PostgreSQL</strong>), execute queries, manage data, metadatas,
+          internal params, and everything else. Thanks to anyone interested! 😁
+          - Leonardo Priori
+        </p>
+        <div>
+          <a
+            href="https://github.com/priori/priori-db/releases"
+            class="download"
+            >Download <i class="fas fa-download"></i>
+          </a>
+          <small>Windows, Mac or Linux</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="feature-container">
+      <div class="feature" data-aos="fade-up">
+        <div class="feature-content">
+          <h2>Launcher 🚀</h2>
+          <div>
+            <p>
+              Built-in entity finder / launcher for quick database objects
+              access
+            </p>
+            <div class="shortcuts">
+              <strong class="shortcut"><span class="cmd">CMD</span>+P</strong>
+              or
+              <strong class="shortcut"><span class="ctrl">CTRL</span>+P</strong>
+            </div>
+          </div>
+        </div>
+        <video autoplay loop muted playsinline>
+          <source src="launcher.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="feature" data-aos="fade-up">
+        <div class="feature-content">
+          <h2>Multiple Theme Support 🎨 ✨</h2>
+          <div>
+            A easy to use, clean and beautiful system with support for light and
+            dark theme options.
+          </div>
+        </div>
+        <video autoplay loop muted playsinline>
+          <source src="themes.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="feature" data-aos="fade-up">
+        <div class="feature-content">
+          <h2>Advanced Query Editor and Executor</h2>
+          <p>
+            Powerful and complete SQL editor with syntax highlighting, queries
+            history, favorite queries, rich data grid, incremental fetching,
+            STDIN and STDOUT PostgreSQL support, tab renaming, and more.
+          </p>
+        </div>
+        <video autoplay loop muted playsinline>
+          <source src="query.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="feature" data-aos="fade-up">
+        <div class="feature-content">
+          <h2>Powerfull Tree-Style Navigation</h2>
+          <p>
+            Effortlessly browse through your database structure with a intuitive
+            tree navigation, with easy search capbalities, easy access to
+            adjustments, table datas, metadatas, functions, domains, and more.
+          </p>
+        </div>
+        <video autoplay loop muted playsinline>
+          <source src="nav.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="feature" data-aos="fade-up">
+        <div class="feature-content">
+          <h2>Interactive Data Grid</h2>
+          <p>
+            Powerful data grid for database records with editing, filtering,
+            incremental fetching, sorting, etc.
+          </p>
+        </div>
+        <video autoplay loop muted playsinline>
+          <source src="data-grid.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="feature" data-aos="fade-up">
+        <div class="feature-content">
+          <h2>A big list of features</h2>
+          <p>
+            You can modify any internal configuration of the database,
+            parameters, manage users, roles, permissions, sequences, funcions,
+            triggers, indexes, comments, and more.
+          </p>
+        </div>
+        <video autoplay loop muted playsinline>
+          <source src="full.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <section class="support-section">
+      <h2>Need Help?</h2>
+      <p>
+        Found a bug or have a feature request?<br />Feel free to open an issue
+        on our GitHub repository.
+      </p>
+      <div class="social-links">
+        <a href="https://github.com/priori/priori-db/issues" target="_blank"
+          >Open an Issue</a
+        >
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-content">
+        <a href="https://www.linkedin.com/in/leonardo-priori-67668836/">
+          <img
+            src="https://avatars.githubusercontent.com/u/737960?s=400&amp;u=4b76d222dd024df000d62a17ec98eb5a362d4f71&amp;v=4"
+            style="
+              max-width: 100px;
+              float: right;
+              margin-right: 10px;
+              border-radius: 50%;
+              border: 5px solid white;
+            "
+        /></a>
+        <p>
+          Thank you for your interest in <strong>Priori DB</strong>! Built with
+          TypeScript, React, Node, and Electron.<br />I hope it makes your work
+          easier and more enjoyable. The full source code is available on
+          GitHub, and if you'd like to support the project, you can do so
+          through <a href="https://ko-fi.com/priori">Ko-fi</a>!
+        </p>
+        <div class="tech-stack">
+          <span class="tech-item">Electron</span>
+          <span class="tech-item">React</span>
+          <span class="tech-item">TypeScript</span>
+          <span class="tech-item">PostgreSQL</span>
+          <span class="tech-item">MySQL </span>
+        </div>
+
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/leonardo-priori-67668836/"
+            target="_blank"
+            >LinkedIn
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://ko-fi.com/priori" target="_blank"
+            >Ko-fi <i class="fas fa-coffee"></i>
+          </a>
+          <a href="https://github.com/priori/priori-db" target="_blank"
+            >GitHub
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://github.com/priori/priori-db/releases" target="_blank"
+            >Download <i class="fa fa-download"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        offset: 200,
+        once: false, // Changed from true to false to make animations repeat
+        mirror: true, // Added to make animations reverse when scrolling up
+      });
+    </script>
+  </body>
+</html>
