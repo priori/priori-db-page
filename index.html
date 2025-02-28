@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Priori DB - Modern Database Management Tool</title>
+    <title>Priori DB</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
@@ -14,11 +14,15 @@
     />
     <style>
       :root {
-        --primary: #1976d2;
-        --text: #fff;
-        --accent: #fe0;
+        --blue: #1976d2;
+        --yellow: #fe0;
       }
-
+      body.en .pt {
+        display: none;
+      }
+      body.pt .en {
+        display: none;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -26,14 +30,12 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, sans-serif;
       }
-
       body {
         background: #2a2a2a;
-        color: var(--text);
+        color: #fff;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
       }
-
       .header {
         padding: 1.2rem;
         text-align: center;
@@ -43,7 +45,7 @@
         background: #333;
       }
       .header div {
-        max-width: 960px;
+        max-width: 1120px;
         margin: 0 auto;
         gap: 1rem;
         align-items: center;
@@ -56,7 +58,7 @@
         left: 0;
         right: 0;
         height: 14px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
+        background: linear-gradient(90deg, var(--blue), var(--yellow));
       }
 
       .header h1 {
@@ -66,23 +68,28 @@
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         white-space: nowrap;
       }
-      .header p {
-        font-size: 15px;
-      }
+
       .header strong {
-        color: #fe1;
+        color: var(--yellow);
         font-size: 14px;
       }
 
       .header p {
+        font-size: 15px;
         max-width: 800px;
         margin: 0 auto;
         color: #fff;
         text-wrap: balance;
       }
+      .header .emoji {
+        font-size: 21px;
+        position: relative;
+        top: 3px;
+        line-height: 0;
+      }
 
       .feature-container {
-        max-width: 960px;
+        max-width: 1160px;
         margin: 0 auto;
         padding: 1.2rem;
       }
@@ -119,7 +126,7 @@
       }
 
       .about {
-        background: var(--primary);
+        background: var(--blue);
         color: white;
         padding: 4rem 2rem;
         text-align: center;
@@ -135,7 +142,11 @@
       }
 
       .social-links {
+        gap: 2rem;
         margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
       .social-links a {
@@ -151,7 +162,7 @@
 
       .social-links a:hover {
         background: white;
-        color: var(--primary);
+        color: var(--blue);
       }
 
       .tech-stack {
@@ -174,17 +185,17 @@
         background: #222;
       }
       .support-section h2 {
-        color: #fe0;
+        color: var(--yellow);
         margin-bottom: 18px;
       }
       .about p {
         text-wrap: balance;
       }
       .about-content p a {
-        color: #fe0;
+        color: var(--yellow);
         font-weight: bold;
         font-size: 18px;
-        border-bottom: 3px solid #fe0;
+        border-bottom: 3px solid var(--yellow);
         line-height: 7px;
         text-decoration: none;
         height: 16px;
@@ -194,12 +205,13 @@
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
       }
       video {
-        max-width: 600px;
+        max-width: 800px;
+        aspect-ratio: 800 / 600;
         border-radius: 11px !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
       }
       .download {
-        background: var(--primary);
+        background: var(--blue);
         color: white;
         padding: 1rem 2rem;
         border-radius: 20px;
@@ -218,8 +230,6 @@
         background: #444;
         color: white;
         border-radius: 4px;
-        margin-right: 0.5rem;
-        margin-left: 0.5rem;
         font-size: 21px;
         font-family: monospace;
         display: inline-block;
@@ -245,7 +255,7 @@
         text-align: center;
       }
 
-      @media (min-width: 920px) {
+      @media (min-width: 1020px) {
         .feature {
           display: flex;
         }
@@ -255,44 +265,81 @@
         .header > div {
           display: flex;
         }
+        .shortcuts {
+          line-height: 2.5em;
+        }
       }
-      @media (max-width: 920px) {
+      @media (max-width: 1020px) {
         .download {
           display: block;
           width: min-content;
-          margin-top: 16px;
+          margin-top: 34px;
+          margin-bottom: 20px;
+          padding: 0.5rem 3rem 1.5rem 3rem;
         }
         .header h1,
         .header p {
           text-align: left;
           margin-left: 0;
         }
+        .header div {
+          /* margin-bottom: 35px; */
+          margin-bottom: 28px;
+        }
         small {
           text-align: left;
-          margin-left: 26px;
-          margin-top: -19px;
+          margin-left: 41px;
+          margin-top: -51px;
+          margin-bottom: 15px;
         }
       }
     </style>
   </head>
-  <body>
+  <body class="en">
+    <script>
+      document.body.className =
+        navigator.language &&
+        navigator.language.toLowerCase().match(/^pt(-.*)+$/i)
+          ? "pt"
+          : "en";
+    </script>
     <header class="header">
       <div>
         <h1>Priori DB</h1>
         <p>
-          This project was built in my free time out of passion. It's a database
-          management tool designed to be as practical and easy to use as
-          possible while offering a clean and intuitive interface. With it, you
-          can fully manage databases (<strong>MySQL</strong> and
-          <strong>PostgreSQL</strong>), execute queries, manage data, metadatas,
-          internal params, and everything else. Thanks to anyone interested! 😁
-          - Leonardo Priori
+          <span class="en">
+            This project was built in my free time out of passion. It's a
+            database management tool designed to be as practical and easy to use
+            as possible while offering a clean and intuitive interface. With it,
+            you can fully manage databases (<strong>MySQL</strong> and
+            <strong>PostgreSQL</strong>), execute queries, manage data,
+            metadatas, internal params, and everything else. Thanks to anyone
+            interested!</span
+          >
+          <span class="pt"
+            >Este projeto foi construído no meu tempo livre por paixão. É uma
+            ferramenta de gerenciamento de banco de dados projetada para ser o
+            mais prática e fácil de usar possível, ao mesmo tempo em que oferece
+            uma interface limpa e intuitiva. Com ela, você pode fazer o
+            gerenciamento completo do bancos de dados (<strong>MySQL</strong> e
+            <strong>PostgreSQL</strong>), executar consultas, gerenciar dados,
+            metadados, parâmetros internos e tudo mais. Obrigado a todos os
+            interessados!
+          </span>
+          <span class="emoji">😁</span>
+          -
+          <a
+            style="color: white; font-weight: bold; font-size: 14px"
+            href="https://www.linkedin.com/in/leonardo-priori-67668836/"
+            >Leonardo Priori</a
+          >
         </p>
         <div>
           <a
+            style="transition: none !important"
             href="https://github.com/priori/priori-db/releases"
             class="download"
-            >Download <i class="fas fa-download"></i>
+            >Download <i class="fas fa-download" style="width: 19px"></i>
           </a>
           <small>Windows, Mac or Linux</small>
         </div>
@@ -304,13 +351,27 @@
         <div class="feature-content">
           <h2>Launcher 🚀</h2>
           <div>
-            <p>
+            <p class="en">
               Built-in entity finder / launcher for quick database objects
               access
             </p>
+            <p class="pt">
+              Buscador / launcher para acesso rápido a objetos de banco de dados
+            </p>
             <div class="shortcuts">
               <strong class="shortcut"><span class="cmd">CMD</span>+P</strong>
-              or
+              <span
+                style="margin-right: 0.5rem; margin-left: 0.5rem"
+                class="en"
+              >
+                or
+              </span>
+              <span
+                style="margin-right: 0.5rem; margin-left: 0.5rem"
+                class="pt"
+              >
+                ou
+              </span>
               <strong class="shortcut"><span class="ctrl">CTRL</span>+P</strong>
             </div>
           </div>
@@ -322,10 +383,18 @@
 
       <div class="feature" data-aos="fade-up">
         <div class="feature-content">
-          <h2>Multiple Theme Support 🎨 ✨</h2>
-          <div>
-            A easy to use, clean and beautiful system with support for light and
-            dark theme options.
+          <h2>
+            <span class="en">Multiple Theme Support</span>
+            <span class="pt"> Suporte a Múltiplos Temas </span>
+            🎨 ✨
+          </h2>
+          <div class="en">
+            A fine grained, easy to use and beautiful system with support for
+            light and dark theme options.
+          </div>
+          <div class="pt">
+            Um sistema fácil de usar, limpo e bonito com suporte para opções de
+            tema claro e escuro.
           </div>
         </div>
         <video autoplay loop muted playsinline>
@@ -335,11 +404,18 @@
 
       <div class="feature" data-aos="fade-up">
         <div class="feature-content">
-          <h2>Advanced Query Editor and Executor</h2>
-          <p>
+          <h2 class="en">Advanced Query Editor and Executor</h2>
+          <h2 class="pt">Editor e Executor de Consultas Avançado</h2>
+          <p class="en">
             Powerful and complete SQL editor with syntax highlighting, queries
             history, favorite queries, rich data grid, incremental fetching,
             STDIN and STDOUT PostgreSQL support, tab renaming, and more.
+          </p>
+          <p class="pt">
+            Editor SQL poderoso e completo com realce de sintaxe, histórico de
+            consultas, consultas favoritas, grade de dados rica, fetching
+            incremental, suporte a STDIN e STDOUT do PostgreSQL, renomeação de
+            abas e muito mais.
           </p>
         </div>
         <video autoplay loop muted playsinline>
@@ -349,11 +425,18 @@
 
       <div class="feature" data-aos="fade-up">
         <div class="feature-content">
-          <h2>Powerfull Tree-Style Navigation</h2>
-          <p>
+          <h2 class="en">Powerfull Tree-Style Navigation</h2>
+          <p class="en">
             Effortlessly browse through your database structure with a intuitive
             tree navigation, with easy search capbalities, easy access to
             adjustments, table datas, metadatas, functions, domains, and more.
+          </p>
+          <h2 class="pt">Navegação Hierárquica Facilitada</h2>
+          <p class="pt">
+            Navegue facilmente pela estrutura do seu banco de dados com uma
+            navegação em árvore intuitiva, com fácil capacidade de pesquisa,
+            fácil acesso a ajustes, dados de tabela, metadados, funções, e muito
+            mais.
           </p>
         </div>
         <video autoplay loop muted playsinline>
@@ -363,10 +446,15 @@
 
       <div class="feature" data-aos="fade-up">
         <div class="feature-content">
-          <h2>Interactive Data Grid</h2>
-          <p>
+          <h2 class="en">Interactive Data Grid</h2>
+          <p class="en">
             Powerful data grid for database records with editing, filtering,
             incremental fetching, sorting, etc.
+          </p>
+          <h1 class="pt">Grade de Dados Interativa</h1>
+          <p class="pt">
+            Componente poderoso para navegar pelos registros com edição,
+            filtragem, fetching incremental, ordenação, etc.
           </p>
         </div>
         <video autoplay loop muted playsinline>
@@ -376,11 +464,17 @@
 
       <div class="feature" data-aos="fade-up">
         <div class="feature-content">
-          <h2>A big list of features</h2>
-          <p>
+          <h2 class="en">A big list of features</h2>
+          <h2 class="pt">Uma grande lista de funcionalidades</h2>
+          <p class="en">
             You can modify any internal configuration of the database,
             parameters, manage users, roles, permissions, sequences, funcions,
             triggers, indexes, comments, and more.
+          </p>
+          <p class="pt">
+            Você pode modificar qualquer configuração interna do banco de dados,
+            parâmetros, gerenciar usuários, roles, permissões, sequences,
+            funções, triggers, índices, comentários e muito mais.
           </p>
         </div>
         <video autoplay loop muted playsinline>
@@ -390,14 +484,20 @@
     </div>
 
     <section class="support-section">
-      <h2>Need Help?</h2>
-      <p>
+      <h2 class="en">Need Help?</h2>
+      <h2 class="pt">Precisa de Ajuda?</h2>
+      <p class="en">
         Found a bug or have a feature request?<br />Feel free to open an issue
         on our GitHub repository.
       </p>
+      <p class="pt">
+        Encontrou um bug ou tem um pedido de funcionalidade?<br />Sinta-se à
+        vontade para abrir uma issue em nosso repositório do GitHub.
+      </p>
       <div class="social-links">
         <a href="https://github.com/priori/priori-db/issues" target="_blank"
-          >Open an Issue</a
+          ><span class="en">Open an Issue</span
+          ><span class="pt"> Abrir uma Issue </span></a
         >
       </div>
     </section>
@@ -410,17 +510,26 @@
             style="
               max-width: 100px;
               float: right;
-              margin-right: 10px;
+              margin-left: 10px;
               border-radius: 50%;
               border: 5px solid white;
             "
         /></a>
-        <p>
+        <p class="en">
           Thank you for your interest in <strong>Priori DB</strong>! Built with
-          TypeScript, React, Node, and Electron.<br />I hope it makes your work
-          easier and more enjoyable. The full source code is available on
-          GitHub, and if you'd like to support the project, you can do so
-          through <a href="https://ko-fi.com/priori">Ko-fi</a>!
+          TypeScript, React, Node, and Electron. <nobr>I hope</nobr> it makes
+          your work easier and more enjoyable. The full source code is available
+          on GitHub, and if you'd like to support the project, you can do so
+          through <a href="https://ko-fi.com/priori">Ko-fi</a
+          ><span style="font-size: 27px; line-height: 0">.</span>
+        </p>
+        <p class="pt">
+          Obrigado pelo seu interesse no <strong>Priori DB</strong>! Construído
+          com TypeScript, React, Node e Electron. Espero que torne seu trabalho
+          mais fácil e agradável. O código-fonte completo está disponível no
+          GitHub, e se você gostaria de apoiar o projeto, você pode fazer isso
+          através do <a href="https://ko-fi.com/priori">Ko-fi</a
+          ><span style="font-size: 27px; line-height: 0">.</span>
         </p>
         <div class="tech-stack">
           <span class="tech-item">Electron</span>
@@ -429,7 +538,6 @@
           <span class="tech-item">PostgreSQL</span>
           <span class="tech-item">MySQL </span>
         </div>
-
         <div class="social-links">
           <a
             href="https://www.linkedin.com/in/leonardo-priori-67668836/"
@@ -450,14 +558,13 @@
         </div>
       </div>
     </section>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
       AOS.init({
         duration: 800,
         offset: 200,
-        once: false, // Changed from true to false to make animations repeat
-        mirror: true, // Added to make animations reverse when scrolling up
+        once: false,
+        mirror: true,
       });
     </script>
   </body>
